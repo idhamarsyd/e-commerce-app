@@ -1,0 +1,11 @@
+.link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  /* border: 1px solid black; */
+  margin: 0;
+  padding: 0;
+}

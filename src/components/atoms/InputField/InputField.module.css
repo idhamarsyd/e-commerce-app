@@ -1,0 +1,27 @@
+.input {
+  /* border: 1px solid black; */
+  height: 40px;
+  border: 1.5px solid rgba(18, 91, 80, 0.3);
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.container {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  /* gap: 12px; */
+}
+
+.input:disabled {
+  background: #faf5e4;
+}

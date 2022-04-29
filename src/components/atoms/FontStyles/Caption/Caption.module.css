@@ -1,0 +1,11 @@
+.caption {
+  /* border: 1px solid black; */
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  margin: 0;
+  padding: 0;
+}
