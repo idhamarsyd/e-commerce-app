@@ -39,6 +39,7 @@ export const userSlice = createSlice({
         sessionStorage.setItem("admin", state.adminEmail);
         state.isAuthenticated = true;
         state.role = "admin";
+        console.log(state.role);
       } else {
         state.error = true;
       }

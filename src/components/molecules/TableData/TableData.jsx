@@ -25,6 +25,7 @@ const TableData = (props) => {
           value={props.quantity}
           type="number"
           OnChange={props.OnUpdate}
+          disabled={props.disabled}
         />
         <BodyText label={props.totalPrice} width={64} align="center" />
       </div>

@@ -6,6 +6,7 @@ import BodyText from "../../atoms/FontStyles/Body/Body";
 import Headline from "../../atoms/FontStyles/Headline/Headline";
 import Button from "../../atoms/Button/Button";
 import InputField from "../../atoms/InputField/InputField";
+import LinkText from "../../atoms/FontStyles/Link/Link";
 
 const ProductCard = (props) => {
   var formatter = new Intl.NumberFormat("en-US", {
@@ -35,18 +36,19 @@ const ProductCard = (props) => {
     } else if (type === "admin") {
       return (
         <>
-          <InputField
-            label="Quantity"
-            width={64}
-            type="number"
-            placeholder={1}
-            OnChange={props.OnChangeField}
-          />
+          {/* <Subheadline label="Update Stocks" /> */}
+          <LinkText label="Update Stocks" opacity={0.6} />
           <Button
-            label="Update"
+            label="+1"
             buttonIcon="no-icon"
             type="fill"
-            OnPress={props.OnUpdate}
+            OnPress={props.OnPlus}
+          />
+          <Button
+            label="-1"
+            buttonIcon="no-icon"
+            type="fill"
+            OnPress={props.OnMinus}
           />
         </>
       );

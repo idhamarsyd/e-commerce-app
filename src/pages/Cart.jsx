@@ -9,7 +9,10 @@ import {
   updateQuantity,
   resetQuantity,
   updateItem,
+  emptyCart,
 } from "../stores/cartReducer";
+import { addRecap, updateRecap } from "../stores/rekapReducer";
+import React, { useEffect } from "react";
 import { decreaseQuantity } from "../stores/productsReducer";
 
 const {
@@ -23,6 +26,12 @@ const Cart = (props) => {
   const dispatch = useDispatch();
   const { cart, quantity } = useSelector((state) => state.cart);
   const { data } = useSelector((state) => state.products);
+  const { rekap } = useSelector((state) => state.rekap);
+
+  useEffect(() => {
+    console.log(rekap);
+    // console.log(cart);
+  }, [rekap]);
 
   var formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -44,13 +53,27 @@ const Cart = (props) => {
     }
   };
 
+  const checkItem = (query) => {
+    const found = rekap.some((el) => el.id === query.id);
+    return found;
+  };
+
+  const OnCheckoutHandler = async () => {
+    console.log("jalan");
+    await cart.map((cartItem) =>
+      !checkItem(cartItem)
+        ? dispatch(addRecap(cartItem))
+        : dispatch(updateRecap(cartItem))
+    );
+    dispatch(emptyCart());
+  };
+
   return (
     <div className="productList">
       <Headline label="Cart" />
       {cart.length === 0 ? (
         <Subheadline label="Anda belum menambahkan item apapun." />
       ) : (
-        // <Subheadline label="ada" />
         <div className="wrapped">
           <div className="header">
             <div className="empty"></div>
@@ -83,7 +106,12 @@ const Cart = (props) => {
               headerLabel="Total"
               totalPrice={formatter.format(sum)}
             />
-            <Button label="Checkout" type="fill" buttonIcon="no-icon" />
+            <Button
+              label="Checkout"
+              type="fill"
+              buttonIcon="no-icon"
+              OnPress={() => OnCheckoutHandler()}
+            />
           </div>
         </div>
       )}

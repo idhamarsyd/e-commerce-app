@@ -3,6 +3,7 @@ import NavBar from "./components/molecules/NavBar/Navbar";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
+import RekapPenjualan from "./pages/RekapPenjualan";
 import Cart from "./pages/Cart";
 import React, { useEffect } from "react";
 import Login from "./pages/Login";
@@ -37,6 +38,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/rekap-penjualan" element={<RekapPenjualan />} />
       </Routes>
     </div>
   );

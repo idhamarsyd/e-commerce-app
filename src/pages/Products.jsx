@@ -2,7 +2,11 @@ import Headline from "../components/atoms/FontStyles/Headline/Headline";
 import ProductCard from "../components/molecules/ProductCard/ProductCard";
 import { useNavigate, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts, decreaseQuantity } from "../stores/productsReducer";
+import {
+  fetchProducts,
+  plusStock,
+  minusStock,
+} from "../stores/productsReducer";
 import { addCart, updateCartItem } from "../stores/cartReducer";
 import React, { useEffect } from "react";
 
@@ -53,6 +57,10 @@ const Products = (props) => {
                 category={product.category}
                 image={product.image}
                 price={product.price}
+                value={product.quantity}
+                // OnUpdate={dispatch(updateQuantity(newItem))}
+                OnPlus={() => dispatch(plusStock(product))}
+                OnMinus={() => dispatch(minusStock(product))}
                 quantity={product.quantity}
                 type="admin"
               />

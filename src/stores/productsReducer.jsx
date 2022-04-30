@@ -30,6 +30,22 @@ export const productsSlice = createSlice({
           : product.quantity
       );
     },
+    plusStock: (state, action) => {
+      state.data.map((product) =>
+        product.id === action.payload.id
+          ? (product.quantity += 1)
+          : product.quantity
+      );
+    },
+    minusStock: (state, action) => {
+      state.data.map((product) =>
+        product.id === action.payload.id
+          ? product.quantity > 0
+            ? (product.quantity -= 1)
+            : product.quantity
+          : product.quantity
+      );
+    },
   },
   extraReducers: {
     [fetchProducts.fulfilled]: (state, action) => {
@@ -42,6 +58,10 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { decreaseQuantity } = productsSlice.actions;
+export const {
+  decreaseQuantity,
+  plusStock,
+  minusStock,
+} = productsSlice.actions;
 
 export default productsSlice.reducer;
