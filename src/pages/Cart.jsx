@@ -46,7 +46,6 @@ const Cart = (props) => {
     if (e.target.value.length !== 0) {
       const updateProduct = { ...product, quantity: parseInt(e.target.value) };
       dispatch(updateItem(updateProduct));
-      // dispatch(decreaseQuantity(updateProduct));
     } else {
       const updateProduct = { ...product, quantity: 0 };
       dispatch(updateItem(updateProduct));
@@ -58,13 +57,26 @@ const Cart = (props) => {
     return found;
   };
 
+  const addToRekap = (item) => {
+    dispatch(addRecap(item));
+    dispatch(decreaseQuantity(item));
+  };
+
+  const updateToRekap = (item) => {
+    dispatch(updateRecap(item));
+    dispatch(decreaseQuantity(item));
+  };
+
   const OnCheckoutHandler = async () => {
-    console.log("jalan");
-    await cart.map((cartItem) =>
-      !checkItem(cartItem)
-        ? dispatch(addRecap(cartItem))
-        : dispatch(updateRecap(cartItem))
-    );
+    // console.log("jalan");
+    await cart.map((cartItem) => {
+      if (
+        cartItem.quantity <
+        data.find((product) => product.id === cartItem.id).quantity
+      ) {
+        !checkItem(cartItem) ? addToRekap(cartItem) : updateToRekap(cartItem);
+      }
+    });
     dispatch(emptyCart());
   };
 
