@@ -31,12 +31,12 @@ export const userSlice = createSlice({
   },
   reducers: {
     saveToken: (state) => {
-      sessionStorage.setItem("token", state.token);
+      localStorage.setItem("token", state.token);
     },
     authAdmin: (state) => {
-      sessionStorage.removeItem("token");
+      localStorage.removeItem("token");
       if (state.password === state.adminPassword) {
-        sessionStorage.setItem("admin", state.adminEmail);
+        localStorage.setItem("admin", state.adminEmail);
         state.isAuthenticated = true;
         state.role = "admin";
         console.log(state.role);
@@ -58,8 +58,8 @@ export const userSlice = createSlice({
       state.token = null;
       state.adminStatus = false;
       state.isAuthenticated = false;
-      sessionStorage.removeItem("token");
-      sessionStorage.removeItem("admin");
+      localStorage.removeItem("token");
+      localStorage.removeItem("admin");
       state.role = null;
     },
     setError: (state) => {

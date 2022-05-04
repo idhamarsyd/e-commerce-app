@@ -71,7 +71,7 @@ const Cart = (props) => {
     // console.log("jalan");
     await cart.map((cartItem) => {
       if (
-        cartItem.quantity <
+        cartItem.quantity <=
         data.find((product) => product.id === cartItem.id).quantity
       ) {
         !checkItem(cartItem) ? addToRekap(cartItem) : updateToRekap(cartItem);
