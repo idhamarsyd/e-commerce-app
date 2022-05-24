@@ -12,3 +12,7 @@ Sign In Information:
 - Customer Role:
   - Email: jimmie@gmail.com
   - Password: klein*#%*
+
+Update 24/5/2022:
+
+Live Website url: https://melodic-jelly-01301c.netlify.app/
